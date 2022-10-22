@@ -33,6 +33,18 @@ var sectionStyle = {
   backgroundImage: `url(${Background})`
 };
 
+var dob = '19951122';
+var year = Number(dob.substring(0, 4));
+var month = Number(dob.substring(4, 2)) - 1;
+var day = Number(dob.substring(6, 2));
+var today = new Date();
+var age = today.getFullYear() - year;
+if (today.getMonth() < month || (today.getMonth() === month && today.getDate() < day)) {
+  age--;
+}
+// var age = new Date().getFullYear() - 1995
+
+
 class Index extends React.Component {
   componentDidMount() {
     document.documentElement.scrollTop = 0;
@@ -131,8 +143,8 @@ class Index extends React.Component {
                   </Row>
                   <div className="text-center mt-5">
                     <h3>
-                      Muhammad Fariz Hidayat{" "}
-                      <span className="font-weight-light">, 25</span>
+                      Muhammad Fariz Hidayat
+                      <span className="font-weight-light">, { age }th</span>
                     </h3>
                     <div className="h6 font-weight-300">
                       <i className="ni location_pin mr-2" />
@@ -140,7 +152,7 @@ class Index extends React.Component {
                     </div>
                     <div className="h6 mt-4">
                       <i className="ni business_briefcase-24 mr-2" />
-                      Software Engineer at Bussan Auto Finance
+                      Software Engineer
                     </div>
                     <div>
                       <i className="ni education_hat mr-2" />
@@ -151,10 +163,10 @@ class Index extends React.Component {
                     <Row className="justify-content-center">
                       <Col lg="9">
                         <p>
-                        I am a Software Engineer with strong passion to learn new things. 
-                        I am familiar with a few Laravel, Codeigniter and Golang framework (Gin Gonic). 
-                        Currently I am interested and learning about iOS Development with Swift. 
-                        I enjoy cooking and adventure on my spare time.
+                        I am a Software Engineer with huge passion of learning new things. I am familiar with
+PHP framework (Laravel & CI) and Golang framework (Gin Gonic). Currently I am
+interested with DevOps area specifically in docker environment, CI/CD, Linux
+Server Administration and Cloud environment. I enjoy cooking and adventure on my spare time.
                         </p>
                         {/* <a href="#pablo" onClick={e => e.preventDefault()}>
                           Show more
