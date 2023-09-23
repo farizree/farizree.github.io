@@ -97,7 +97,7 @@ class Index extends React.Component {
                           <img
                             alt="..."
                             className="rounded-circle"
-                            src={require("assets/img/theme/fariz.jpg")}
+                            src={require("assets/img/theme/farizree.jpeg")}
                           />
                         </a>
                       </div>
@@ -113,7 +113,7 @@ class Index extends React.Component {
                           href={MyPDF}
                           id="btnresume"
                           target="_blank"
-                          download="farizresume.pdf"
+                          download="farizree.pdf"
                           size="sm"
                         >
                           My Resume

@@ -1,14 +1,20 @@
-FROM node:11.0.0
+# FROM mhart/alpine-node:14 AS builder
+# pull official base image
+FROM node:14-alpine
+
+# set working directory
 WORKDIR /app
-COPY . .
-RUN npm cache clean --force
-RUN rm -rf node_modules/
+
+# add `/app/node_modules/.bin` to $PATH
+ENV PATH /app/node_modules/.bin:$PATH
+
+# install app dependencies
+COPY package.json ./
+COPY package-lock.json ./
 RUN npm install
 
-RUN npm run build
+# add app
+COPY . ./
 
-# production environment
-FROM nginx:stable-alpine
-COPY --from=build /app/build /usr/share/nginx/html
-EXPOSE 3000
-CMD ["nginx", "-g", "daemon off;"]
+# start app
+CMD ["npm", "start"]  
